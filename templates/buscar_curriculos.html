@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Buscar Currículos</h2>
+    <form id="search-form" class="mb-4">
+        <div class="input-group">
+            <input type="text" id="termo-input" name="termo" class="form-control" placeholder="Palavras-chave" required>
+            <button type="submit" class="btn btn-success">Procurar</button>
+        </div>
+    
+        <div class="mt-2">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu 1
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção 1"> Opção 1</a></li>
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção 2"> Opção 2</a></li>
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção 3"> Opção 3</a></li>
+                </ul>
+            </div>
+    
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu 2
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção A"> Opção A</a></li>
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção B"> Opção B</a></li>
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção C"> Opção C</a></li>
+                </ul>
+            </div>
+    
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu 3
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção X"> Opção X</a></li>
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção Y"> Opção Y</a></li>
+                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção Z"> Opção Z</a></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    
+    <table class="table align-middle table-hover mt-4">
+        <thead>
+            <tr>
+                <th>Linkedin</th>
+                <th>Email</th>
+                <th>Desired Role</th>
+                <th>Country</th>
+                <th>English Level</th>
+                <th>Resume URL</th>
+            </tr>
+        </thead>
+        <tbody id="results-table" class="table-group-divider">
+            <!-- Resultados serão adicionados aqui -->
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='buscar_curriculos.js') }}"></script>
+{% endblock %}

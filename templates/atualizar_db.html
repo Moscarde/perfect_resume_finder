@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Atualizar Base de Dados</h2>
+    <p>Registros no banco: <span id="count-db">{{ count_db }}</span></p>
+    <p>Registros na tabela de inserção: <span id="count-insert">{{ count_insert }}</span></p>
+    {% if count_db < count_insert %}
+        <button id="processar-btn" class="btn btn-warning">Processar Novos Dados</button>
+        <div id="spinner" style="display:none;" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    {% endif %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="statusModalLabel">Status da Atualização</h5>
+                </div>
+                <div class="modal-body" id="status-messages"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='atualizar_db.js') }}"></script>
+{% endblock %}
