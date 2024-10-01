@@ -8,3 +8,7 @@ body.dark-mode {
         drop-shadow(0 0 10px #EBEBEB) 
         drop-shadow(0 0 20px #EBEBEB);
 }
+
+.font-italic {
+    font-style: italic;
+}

@@ -4,27 +4,24 @@ import fitz
 import requests
 
 
-def download_file(url, dest_folder):
-    if not os.path.exists(dest_folder):
-        os.makedirs(dest_folder)
+def download_file(url, output):
+    os.makedirs(output, exist_ok=True)
 
     response = requests.get(url)
-    filename = os.path.join(dest_folder, url.split("/")[-1])
+    filepath = os.path.join(output, url.split("/")[-1])
 
-    with open(filename, "wb") as file:
+    with open(filepath, "wb") as file:
         file.write(response.content)
 
-    return filename
+    return filepath
 
 
 def extract_text_from_pdf(pdf_path):
-    # Abre o arquivo PDF a partir dos bytes
     doc = fitz.open(pdf_path)
     extracted_text = []
 
-    # Itera sobre todas as páginas
     for page_num in range(doc.page_count):
-        page = doc.load_page(page_num)  # Carrega a página
+        page = doc.load_page(page_num)
         blocks = page.get_text("dict")["blocks"]
 
         for block in blocks:
@@ -37,6 +34,6 @@ def extract_text_from_pdf(pdf_path):
 
     return "\n".join(extracted_text)
 
-def count_new_resumes(table_path="new_resumes.xlsx"):
+def count_new_resumes(table_path):
     df = pd.read_excel(table_path)
     return len(df)
