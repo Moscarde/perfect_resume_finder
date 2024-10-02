@@ -1,12 +1,12 @@
 const socket = io();
 
-document.getElementById('processar-btn').addEventListener('click', function () {
-    document.getElementById('processar-btn').style.display = 'none';
+document.getElementById('process-btn').addEventListener('click', function () {
+    document.getElementById('process-btn').style.display = 'none';
     document.getElementById('spinner').style.display = 'block';
     const statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
     statusModal.show();
 
-    fetch('/processar_novos_dados', {
+    fetch('/process_database', {
         method: 'POST'
     })
         .then(response => response.json())

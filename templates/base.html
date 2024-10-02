@@ -22,15 +22,15 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <!-- Opção de alternar o modo de cor -->
                 <li>
-                    <button class="dropdown-item" id="toggle-dark-mode">Alternar Modo de Cor</button>
+                    <button class="dropdown-item" id="toggle-dark-mode">Change Color Mode</button>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <!-- Verificar sessão Flask para mostrar se o usuário está logado -->
                 {% if session.get('logged_in') %}
-                    <li><span class="dropdown-item">Logado como <span class="fw-bold">{{ session['username'] }}</span></span></li>
-                    <li><a class="dropdown-item" href="/logout">Clique para sair</a></li>
+                    <li><span class="dropdown-item">Logged in as <span class="fw-bold">{{ session['username'] }}</span></span></li>
+                    <li><a class="dropdown-item" href="/logout">Click to Logout</a></li>
                 {% else %}
-                    <li><a class="dropdown-item" href="/login">Fazer Login</a></li>
+                    <li><a class="dropdown-item" href="/login">Login</a></li>
                 {% endif %}
             </ul>
         </div>

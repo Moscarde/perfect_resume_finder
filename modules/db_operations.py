@@ -91,13 +91,13 @@ def db_process_and_insert_data(app, socketio):
     df = pd.read_excel(resumes_form_path)
     urls = df["Resume File"].tolist()
     socketio.emit(
-        "status_update", {"status": f"Encontrado {len(urls)} entradas na planilha."}
+        "status_update", {"status": f"Found {len(urls)} entries in the spreadsheet."}
     )
 
     new_urls = [url for url in urls if not url_exists(session, url)]
     if not new_urls:
         socketio.emit(
-            "status_update", {"status": f"Todas as entradas já foram processadas."}
+            "status_update", {"status": f"All entries have already been processed."}
         )
         session.close()
         return
@@ -107,7 +107,7 @@ def db_process_and_insert_data(app, socketio):
     os.makedirs(resumes_path, exist_ok=True)
     for i, row in df.iterrows():
         socketio.emit(
-            "status_update", {"status": f"Processando... {i + 1}/{len(new_urls)}"}
+            "status_update", {"status": f"Processing... {i + 1}/{len(new_urls)}"}
         )
         resume = download_file(url=row["Resume File"], output=resumes_path)
         extracted_text = extract_text_from_pdf(resume)
