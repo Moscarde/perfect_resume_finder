@@ -36,11 +36,8 @@ body.dark-mode {
 }
 
 /* first button */
-.btn-search-resume {
+.btn-pink {
     background-color: #ffc6c6;
     color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+
 }
