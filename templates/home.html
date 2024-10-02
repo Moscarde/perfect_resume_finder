@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="home-container">
     <div class="text-center">
-        <img src="/static/prf_logo.jpg" alt="Logo" class="mb-4 img-logo" width="800">
-        <h1>🌟 Perfect Resume Finder 🌟</h1>
-        <a href="/atualizar_db" class="btn btn-primary">Inserir novos currículos</a>
-        <a href="/buscar_curriculos" class="btn btn-secondary">Buscar Currículos</a>
+        <div class="logo bg-white p-3 mb-3 mx-auto rounded d-flex flex-column align-items-center">
+            <img src="/static/solv-e.jpg" alt="Logo" width="80">
+            <h1 class="text-uppercase text-dark m-0 mt-3">Solv-e Resume Finder</h1>
+        </div>
+        <div>
+            <a href="/atualizar_db" class="btn btn-primary">Inserir novos currículos</a>
+            <a href="/buscar_curriculos" class="btn btn-secondary">Buscar Currículos</a>
+        </div>
     </div>
+</div>
 {% endblock %}
