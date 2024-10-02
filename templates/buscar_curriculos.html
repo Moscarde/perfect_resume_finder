@@ -1,68 +1,161 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Buscar Currículos</h2>
-    <form id="search-form" class="mb-4">
-        <div class="input-group">
-            <input type="text" id="termo-input" name="search" class="form-control" placeholder="Palavras-chave" required>
-            <button type="submit" class="btn btn-success">Procurar</button>
+<h2>Buscar Currículos</h2>
+<form id="search-form" class="mb-4">
+    <div class="input-group">
+        <input type="text" id="termo-input" name="search" class="form-control" placeholder="Palavras-chave" required>
+        <button type="submit" class="btn btn-warning">Procurar</button>
+    </div>
+
+    <div class="mt-2">
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Desenvolvimento (Dev)
+            </button>
+            <ul class="dropdown-menu">
+                <li class="fw-bold ps-1">Linguagens de Programação</li>
+
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Java 19"> Java
+                        19</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Python"> Python</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Go Lang"> Go
+                        Lang</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="JavaScript">
+                        JavaScript</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="C#"> C#</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Ruby"> Ruby</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="TypeScript">
+                        TypeScript</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="PHP"> PHP</a></li>
+
+
+                <li class="fw-bold ps-1">Frameworks</li>
+
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Spring"> Spring</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Django"> Django</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="React"> React</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Angular">
+                        Angular</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Vue.js"> Vue.js</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Node.js">
+                        Node.js</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="ASP.NET">
+                        ASP.NET</a></li>
+
+
+                <li class="fw-bold ps-1">Ferramentas e Tecnologias</li>
+
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Docker"> Docker</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Kubernetes">
+                        Kubernetes</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Git"> Git</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="CI/CD"> CI/CD</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="RESTful APIs">
+                        RESTful APIs</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="GraphQL">
+                        GraphQL</a></li>
+
+                <li class="fw-bold ps-1">Desenvolvimento Mobile</li>
+
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Flutter">
+                        Flutter</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="React Native">
+                        React Native</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Swift"> Swift</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Kotlin"> Kotlin</a>
+                </li>
+
+
+            </ul>
         </div>
-    
-        <div class="mt-2">
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu 1
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção 1"> Opção 1</a></li>
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção 2"> Opção 2</a></li>
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção 3"> Opção 3</a></li>
-                </ul>
-            </div>
-    
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu 2
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção A"> Opção A</a></li>
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção B"> Opção B</a></li>
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção C"> Opção C</a></li>
-                </ul>
-            </div>
-    
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu 3
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção X"> Opção X</a></li>
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção Y"> Opção Y</a></li>
-                    <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Opção Z"> Opção Z</a></li>
-                </ul>
-            </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Dados
+            </button>
+            <ul class="dropdown-menu">
+                <li class="fw-bold ps-1">Linguagens de Consulta</li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="SQL"> SQL</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="NoSQL"> NoSQL</a></li>
+        
+                <li class="fw-bold ps-1">Ferramentas de Análise</li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Pandas"> Pandas</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="NumPy"> NumPy</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Apache Spark"> Apache Spark</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Tableau"> Tableau</a></li>
+        
+                <li class="fw-bold ps-1">ETL e Integração</li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Apache Airflow"> Apache Airflow</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Talend"> Talend</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Informatica"> Informatica</a></li>
+            </ul>
         </div>
-    </form>
-    
-    <table class="table align-middle table-hover mt-4">
-        <thead>
-            <tr>
-                <th>Linkedin</th>
-                <th>Email</th>
-                <th>Desired Role</th>
-                <th>Country</th>
-                <th>English Level</th>
-                <th>Resume URL</th>
-            </tr>
-        </thead>
-        <tbody id="results-table" class="table-group-divider">
-            <!-- Resultados serão adicionados aqui -->
-        </tbody>
-    </table>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Nível de Inglês
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="A1"> A1 (Iniciante)</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="A2"> A2 (Elementar)</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="B1"> B1 (Intermediário)</a>
+                </li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="B2"> B2 (Intermediário
+                        Avançado)</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="C1"> C1 (Avançado)</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="C2"> C2 (Fluente)</a></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Gestão de Projetos
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Scrum"> Scrum</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Agile"> Agile</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="Kanban"> Kanban</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="PMI"> PMI</a></li>
+                <li><a class="dropdown-item"><input type="checkbox" class="check-btn" value="PMP"> PMP</a></li>
+            </ul>
+        </div>
+    </div>
+</form>
+
+<table class="table align-middle table-hover mt-4">
+    <thead>
+        <tr>
+            <th>Linkedin</th>
+            <th>Email</th>
+            <th>Desired Role</th>
+            <th>Country</th>
+            <th>English Level</th>
+            <th>Resume URL</th>
+        </tr>
+    </thead>
+    <tbody id="results-table" class="table-group-divider">
+        <!-- Resultados serão adicionados aqui -->
+    </tbody>
+</table>
 
 
 {% endblock %}
 
 {% block scripts %}
-    <script src="{{ url_for('static', filename='buscar_curriculos.js') }}"></script>
+<script src="{{ url_for('static', filename='buscar_curriculos.js') }}"></script>
 {% endblock %}

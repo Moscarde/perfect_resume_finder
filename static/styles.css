@@ -34,3 +34,13 @@ body.dark-mode {
     padding: 30px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
+
+/* first button */
+.btn-search-resume {
+    background-color: #ffc6c6;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
