@@ -1,7 +1,38 @@
 import yaml
 import os
+from flask import Flask
+from typing import Optional, Dict, Union
 
-def load_config(app=None, config_file="config.yaml"):
+def load_config(app: Optional[Flask] = None, config_file: str = "config.yaml") -> Optional[Dict[str, Union[str, int]]]:
+    """
+    Loads configuration from a YAML file.
+
+    If an app instance is provided, it updates `app.config` with values from the YAML file.
+    Otherwise, it returns the configuration as a dictionary.
+
+    Parameters:
+    ----------
+    app : Flask, optional
+        The Flask app instance to update with config values.
+    config_file : str, optional
+        Path to the YAML configuration file (default is "config.yaml").
+
+    Returns:
+    -------
+    dict:
+        A dictionary with config values if no app is passed.
+
+    Exceptions:
+    ----------
+    FileNotFoundError:
+        Raised if the configuration file is not found.
+    KeyError:
+        Raised if required keys are missing from the YAML file.
+    yaml.YAMLError:
+        Raised for any errors in processing the YAML file.
+    Exception:
+        Catches any other unexpected errors.
+    """
     try:
         if not os.path.exists(config_file):
             raise FileNotFoundError(f"Configuration file '{config_file}' not found.")

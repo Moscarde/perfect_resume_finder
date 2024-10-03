@@ -7,18 +7,29 @@ from routes.home import home_bp
 from routes.search import search_bp
 from routes.color_mode import mode_bp
 
-app = Flask(__name__)
-app.secret_key = "secret_key"
-load_config(app)
+def create_app() -> Flask:
+    """
+    Cria e configura a aplicação Flask.
 
-socketio = SocketIO(app)
+    Returns:
+        Flask: Instância da aplicação Flask.
+    """
+    app = Flask(__name__)
+    app.secret_key = "secret_key"
+    load_config(app)
 
-# Registro dos blueprints
-app.register_blueprint(auth_bp)
-app.register_blueprint(db_bp)
-app.register_blueprint(home_bp)
-app.register_blueprint(search_bp)
-app.register_blueprint(mode_bp)
+    # Inicialização do SocketIO
+    socketio = SocketIO(app)
+
+    # Registro dos blueprints
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(db_bp)
+    app.register_blueprint(home_bp)
+    app.register_blueprint(search_bp)
+    app.register_blueprint(mode_bp)
+
+    return app
 
 if __name__ == "__main__":
+    app = create_app()
     app.run(debug=True)
