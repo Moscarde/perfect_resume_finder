@@ -8,7 +8,7 @@ def create_db_tables():
         session, engine = create_db_session()
         create_table(engine)
         session.close()
-        print("Tabelas criadas com sucesso!")
+        print("Tables created!")
     except Exception as e:
         print(e)
 
