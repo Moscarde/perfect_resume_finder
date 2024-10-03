@@ -8,7 +8,10 @@ def load_config(app=None, config_file="config.yaml"):
         
         with open(config_file, "r") as file:
             config = yaml.safe_load(file)
-        
+            
+        if not app:
+            return config
+
         app.config["EXCEL_FILE"] = config["excel_file"]
         app.config["MYSQL_HOST"] = config["mysql"]["host"]
         app.config["MYSQL_PORT"] = config["mysql"]["port"]
