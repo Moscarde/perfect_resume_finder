@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
     eventSource.onmessage = function(event) {
         const data = JSON.parse(event.data);
         const statusMessages = document.getElementById('status-messages');
-        
+
         if (data.event === 'status_done') {
             pClass = 'text-success';
         } else if (data.event === 'status_error') {
-            pClass = 'text-danger';
+            pClass = 'text-dark';
         } else {
-            pClass = 'text-warning';
+            pClass = '';
         }
         statusMessages.innerHTML += `<p class="${pClass}">${data.status}</p>`;
 
