@@ -41,3 +41,8 @@ body.dark-mode {
     color: #ffffff;
 
 }
+
+.modal-dark {
+    background-color: #353435;
+    color: #ffffff;
+}

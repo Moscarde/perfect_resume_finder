@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (data.event === 'status_done') {
             pClass = 'text-success';
         } else if (data.event === 'status_error') {
-            pClass = 'text-dark';
+            pClass = 'text-danger';
         } else {
             pClass = '';
         }

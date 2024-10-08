@@ -23,10 +23,10 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel"
+<div class="modal fade " id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content {{ 'modal-dark' if session.get('color_mode') == 'dark' else '' }}">
             <div class="modal-header">
                 <h5 class="modal-title" id="statusModalLabel">Update Status</h5>
             </div>
