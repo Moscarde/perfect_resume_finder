@@ -1,5 +1,5 @@
 import os
-from typing import Any, List, Tuple
+from typing import Any, List, Tuple, Callable
 
 import pandas as pd
 from flask import Flask
@@ -104,26 +104,6 @@ def get_db_length(app: Flask) -> int:
     return length
 
 
-def url_exists(session, url):
-    return session.query(Resume).filter(Resume.resume_url == url).count() > 0
-
-
-def db_add_resume(session, row, full_text):
-    new_resume = Resume(
-        name=row.get("Name", ""),
-        email=row.get("Email", ""),
-        contry=row.get("Country", ""),
-        desired_role=row.get("Desired Role", ""),
-        salary_expectations=row.get("Salary Expectations in USD", ""),
-        english_level=row.get("English Level", ""),
-        linkedin_url=row.get("Linkedin", ""),
-        resume_url=row.get("Resume File", ""),
-        full_text=full_text,
-    )
-
-    session.add(new_resume)
-
-
 def url_exists(session: Session, url: str) -> bool:
     """
     Checks if a resume URL already exists in the database.
@@ -162,17 +142,18 @@ def db_add_resume(session: Session, row: pd.Series, full_text: str) -> None:
     session.add(new_resume)
 
 
-def db_process_and_insert_data(app: Flask, socketio: SocketIO) -> None:
+def db_process_and_insert_data(app: Flask, add_status_update: Callable[[str, str], None]) -> None:
     """
     Processes new resumes from an Excel file and inserts them into the database.
 
     Args:
         app (Flask): Flask application object, used to access app config.
-        socketio (SocketIO): Flask-SocketIO object to emit status updates to the client.
+        update_function (Callable[[str, str], None]): A function to call with status updates. 
+                                                        Takes two str arguments: the event type and the status message.
     """
     resumes_form_path = app.config["EXCEL_FILE"]
 
-    socketio.emit("status_update", {"status": "Starting processing..."})
+    add_status_update("status_update", "Starting processing...")
     session, engine = create_db_session(
         user=app.config["MYSQL_USER"],
         password=app.config["MYSQL_PASSWORD"],
@@ -184,15 +165,13 @@ def db_process_and_insert_data(app: Flask, socketio: SocketIO) -> None:
 
     df = pd.read_excel(resumes_form_path)
     urls = df["Resume File"].tolist()
-    socketio.emit(
-        "status_update", {"status": f"Found {len(urls)} entries in the spreadsheet."}
-    )
+
+    add_status_update("status_update", f"Found {len(urls)} entries in the spreadsheet.")
+
 
     new_urls = [url for url in urls if not url_exists(session, url)]
     if not new_urls:
-        socketio.emit(
-            "status_update", {"status": "All entries have already been processed."}
-        )
+        add_status_update("status_update", "All entries have already been processed.")
         session.close()
         return
 
@@ -201,9 +180,8 @@ def db_process_and_insert_data(app: Flask, socketio: SocketIO) -> None:
     resumes_path = "resume_files"
     os.makedirs(resumes_path, exist_ok=True)
     for i, row in df.iterrows():
-        socketio.emit(
-            "status_update", {"status": f"Processing... {i + 1}/{len(new_urls)}"}
-        )
+        add_status_update("status_update", f"Processing... {i + 1}/{len(new_urls)}")
+
         resume = download_file(url=row["Resume File"], output=resumes_path)
         extracted_text = extract_text_from_pdf(resume)
 
