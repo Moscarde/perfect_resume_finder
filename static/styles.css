@@ -1,0 +1,48 @@
+body {
+    font-family: "Inter", Helvetica, sans-serif;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+
+.font-italic {
+    font-style: italic;
+}
+
+.navbar {
+    background-color: #ffc6c6
+}
+.home-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* first button */
+.btn-pink {
+    background-color: #ffc6c6;
+    color: #ffffff;
+
+}
+
+.modal-dark {
+    background-color: #353435;
+    color: #ffffff;
+}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="home-container">
+    <div class="text-center">
+        <div class="logo bg-white p-3 mb-3 mx-auto rounded d-flex flex-column align-items-center">
+            <img src="/static/solv-e.jpg" alt="Logo" width="80">
+            <h1 class="text-uppercase text-dark m-0 mt-3">Solv-e Resume Finder</h1>
+        </div>
+        <div>
+            <a href="/process_database" class="btn btn-warning">Process New Resumes</a>
+            <a href="/search" class="btn btn-warning">Resume Finder</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
